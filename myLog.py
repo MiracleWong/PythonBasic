@@ -1,12 +1,13 @@
 #!/usr/local/bin/python
-#-*- coding: utf-8 -*-
-__author__ = "Miracle Wong"
+# -*- coding: utf-8 -*-
 
 import logging
 import getpass
 import sys
 
+
 class MyLog(object):
+
     """这个类用于创建一个自定义的log"""
     def __init__(self):
         user = getpass.getuser()
@@ -18,7 +19,7 @@ class MyLog(object):
         '''日志显示到屏幕上并输出到日志文件内'''
         logHand = logging.FileHandler(logFile)
         logHand.setFormatter(formatter)
-        logHand.setLevel(logging.ERROR) # 只有错误才会被记录到日志中
+        logHand.setLevel(logging.ERROR)  # 只有错误才会被记录到日志中
         logHandSt = logging.StreamHandler()
         logHandSt.setFormatter(formatter)
 
@@ -28,12 +29,16 @@ class MyLog(object):
     '''日志的5个级别，对应以下的5个函数'''
     def debug(self, msg):
         self.logger.debug(msg)
+
     def info(self, msg):
         self.logger.info(msg)
+
     def warn(self, msg):
         self.logger.warn(msg)
+
     def error(self, msg):
         self.logger.error(msg)
+
     def critical(self, msg):
         self.logger.critical(msg)
 
