@@ -13,7 +13,8 @@ class MyLog(object):
         user = getpass.getuser()
         self.logger = logging.getLogger(user)
         self.logger.setLevel(logging.DEBUG)
-        logFile = './' + sys.argv[0][0:-3] + '.log' #日志文件名
+        logFile = sys.argv[0][0:-3] + '.log' #日志文件名
+        print logFile
         formatter = logging.Formatter('%(asctime)-12s %(levelname)-8s %(name)-10s %(message)-12s')
 
         '''日志显示到屏幕上并输出到日志文件内'''
