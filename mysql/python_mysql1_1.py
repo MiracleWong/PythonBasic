@@ -19,12 +19,14 @@ while 1==1:
     cursor = conn.cursor()
 
     # 使用execute方法执行SQL语句
-    cursor.execute("SELECT VERSION()")
+    string1 = "show GLOBAL STATUS LIKE 'Questions';"
+    cursor.execute(string1)
 
     # 使用 fetchone() 方法获取一条数据库。
-    data = cursor.fetchone()
+    data = cursor.fetchall()
+    print data
 
-    print "Database version : %s " % data
+    # print "Database version : %s " % data
     time.sleep(second)
 
 
