@@ -11,7 +11,7 @@ page << h1('My big title', cl='center')
 
 page << div(cl='btn btn-success', id='myDiv1') << p('I love PyH!', id='myP1')
 mydiv2 = page << div(id='myDiv2')
-mydiv2 << h2('A smaller title') + p('Followed by a paragraph.')
+mydiv2 << h2('A smaller title') + text('Followed by a paragraph.')
 page << div(id='myDiv3')
 page.myDiv3.attributes['cl'] = 'myCSSclass3'
 page.myDiv3 << p('Another paragraph')
