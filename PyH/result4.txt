@@ -1,0 +1,33 @@
+PLAY [192.168.1.108] ***********************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [192.168.1.108]
+
+TASK [templates/tomcat-nginx : Install Nginx] **********************************
+skipping: [192.168.1.108]
+
+TASK [templates/tomcat-nginx : Copy the config files] **************************
+ok: [192.168.1.108]
+
+TASK [templates/tomcat-nginx : Copy the config files] **************************
+--- before: /etc/nginx/conf.d/111.conf
++++ after: dynamically generated
+@@ -6,7 +6,6 @@
+     listen       3306 default_server;
+     server_name  172.20.1.58;
+     root         /usr/share/nginx/html;
+-    namet         /etc/share/nginx/html;
+
+     # Load configuration files for the default server block.
+     include /etc/nginx/default.d/*.conf;
+
+changed: [192.168.1.108]
+
+TASK [templates/tomcat-nginx : wait for tomcat to start] ***********************
+skipping: [192.168.1.108]
+
+RUNNING HANDLER [templates/tomcat-nginx : Restart Nginx Service] ***************
+changed: [192.168.1.108]
+
+PLAY RECAP *********************************************************************
+192.168.1.108              : ok=4    changed=2    unreachable=0    failed=0
