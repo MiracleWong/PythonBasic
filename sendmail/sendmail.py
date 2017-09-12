@@ -16,33 +16,37 @@ from subprocess import Popen, PIPE
 import subprocess
 import commands
 import datetime
-# from myLog import MyLog
+from myLog import MyLog
 import commands
+
+aList=["", "", "", "", ["", ""]]
+aList[0]="Hello"
+d2List = [];
 
 # 日志的配置
 ml = MyLog()
 ## 切换目录
 def chdir():
-    # path = "/Users/miraclewong/github/PythonBasic/Ansible"
-    path = "/etc/ansible"
+    path = "/Users/miraclewong/github/PythonBasic/Ansible"
+    # path = "/etc/ansible"
 
     # 查看当前工作目录
     retval = os.getcwd()
-    print "当前工作目录为 %s" % retval
-    # ml.debug("当前工作目录为: " + retval)
+    # print "当前工作目录为 %s" % retval
+    ml.debug("当前工作目录为: " + retval)
 
     # 修改当前工作目录
     os.chdir(path)
 
     # 查看修改后的工作目录
     retval = os.getcwd()
-    print "目录修改成功 %s" % retval
-    # ml.debug("目录修改成功: " + retval)
+    # print "目录修改成功 %s" % retval
+    ml.debug("目录修改成功: " + retval)
 
 # 读取txt文本数据
 def readTxt():
-    # file_object = open('/Users/miraclewong/github/PythonBasic/PyH/result.txt')
-    file_object = open('/home/wangr/python/PythonFiles/resultH.txt')
+    file_object = open('/Users/miraclewong/github/PythonBasic/PyH/result.txt')
+    # file_object = open('/home/wangr/python/PythonFiles/resultH.txt')
     try:
         txt = file_object.read()
         return txt
@@ -59,9 +63,6 @@ def readHtml():
     finally:
         html_object.close()
 
-
-
-
 # 发送邮件的函数
 def send_mail(sender, recevier, subject, html_content):
     msg = MIMEText(html_content, 'html', 'utf-8')
@@ -72,10 +73,21 @@ def send_mail(sender, recevier, subject, html_content):
     p.communicate(msg.as_string())
 
 
+output = commands.getstatusoutput('ls')  
+print  output 
+def parseTxt():
+    txt = readTxt()
+    # print txt
+    host = re.findall(r'(?<![\.\d])(?:\d{1,3}\.){3}\d{1,3}(?![\.\d])', txt)
+    print host
+    print "服务器的ip为: " + host[0]
+    aList[0]=host[0]
+    aList[1]=
+
 def shellexec():
     # p = Popen(["touch HelloWorld.txt"], stdin=PIPE)
-    # p = subprocess.Popen('touch HelloWorld.txt', shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-    p = subprocess.Popen('ansible-playbook copy-templates-to-app.yml --extra-vars "hosts=172.20.3.53 app_name=devicebus-gw-5200" --check --diff > /home/wangr/python/PythonFiles/resultH.txt', shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    p = subprocess.Popen('touch HelloWorld.txt', shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    # p = subprocess.Popen('ansible-playbook copy-templates-to-app.yml --extra-vars "hosts=172.20.3.53 app_name=devicebus-gw-5200" --check --diff > /home/wangr/python/PythonFiles/resultH.txt', shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 
 # 主程序入口
 def main():
@@ -92,9 +104,12 @@ def main():
     # send_mail(sender, recevier, subject, html)
     # txt = readTxt()
     # print txt
-    chdir()
-    shellexec()
-    txt = readTxt()
-    print txt
+    # chdir()
+    # shellexec()
+    # txt = readTxt()
+    # print txt
+    # print aList[0]
+    parseTxt()
+
 if __name__ == '__main__':
     main()
