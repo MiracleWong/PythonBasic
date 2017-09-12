@@ -1,5 +1,13 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+
+__doc__ = """The PythonDemo.py is to generate the reports of the config files which had been modified in the online services of the servers。This file use the PyH module to convert the text to the html.
+"""
+__author__ = "Wang Rui"
+__version__ = 'v0.1.0'
+__date__ = '2017-09-09'
+
+
 import argparse
 import sys
 import os
@@ -52,9 +60,9 @@ def readTxT():
         file_object.close()
         # print str
 
-    # host = re.findall(r'\-.*', str)
-    # print host
-    # print "服务器的ip为: " + host[0]
+    host = re.findall(r'(?<![\.\d])(?:\d{1,3}\.){3}\d{1,3}(?![\.\d])', str)
+    print host
+    print "服务器的ip为: " + host[0]
     # ll_r=re.compile(r'^\-.*')
     # print ll_r.search(str)
     

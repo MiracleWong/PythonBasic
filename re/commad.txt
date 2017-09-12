@@ -1,0 +1,9 @@
+grep -n '[[:lower:]]' regular_express.txt
+
+
+grep -n 't[ae]st' regular_express.txt 
+grep -n '[^"]' regular_express.txt
+
+$ grep -n 'oog' regular_express.txt
+$ grep -n '[^g]oog' regular_express.txt 
+$ grep -n '[^go]oog'regular_express.txt

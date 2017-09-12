@@ -8,4 +8,8 @@ def send_mail(sender, recevier, subject, html_content):
     msg["Subject"] = subject
     p = Popen(["/usr/sbin/sendmail", "-t"], stdin=PIPE)  
     p.communicate(msg.as_string())  
- send_mail("sender@xxxx.com","xxx@126.com","Mail From Python", "Hello World")
+def main():
+    send_mail("report@51iwifi.com","cfwr1991@126.com","Mail From Python", "Hello World")
+
+if __name__ == '__main__':
+    main()
