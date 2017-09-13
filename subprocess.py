@@ -4,6 +4,6 @@
 # out = child2.communicate()
 # print(out)
 import commands
-cmm = `cat result.txt | grep "^--- before:" | awk -F ': ' '{print $2}'`
-output = commands.getstatusoutput(cmm)  
+cmm = "cat result.txt | grep "^--- before:" | awk -F ': ' '{print $2}'`
+output = commands.getoutput(cmm)  
 print  output 

@@ -1,0 +1,57 @@
+
+
+PLAY [172.20.3.58] *************************************************************
+
+TASK [setup] *******************************************************************
+ok: [172.20.3.58]
+
+TASK [templates/tomcat-devicebus-gw-5200 : Configure Tomcat server] ************
+--- before: /service/tomcat-devicebus-gw-5200/conf/server.xml 
++++ after: dynamically generated 
+@@ -19,7 +19,7 @@
+      define subcomponents such as "Valves" at this level.
+      Documentation at /docs/config/server.html
+  -->
+-<Server port="5210" shutdown="SHUTDOWN">
++<Server port="5211" shutdown="SHUTDOWN">
+   <Listener className="org.apache.catalina.startup.VersionLoggerListener" />
+   <!-- Security listener. Documentation at /docs/config/listeners.html
+   <Listener className="org.apache.catalina.security.SecurityListener" />
+@@ -68,7 +68,7 @@
+          APR (HTTP/AJP) Connector: /docs/apr.html
+          Define a non-SSL HTTP/1.1 Connector on port 8080
+     -->
+-    <Connector port="5200" protocol="HTTP/1.1"
++    <Connector port="5201" protocol="HTTP/1.1"
+                connectionTimeout="20000"
+                redirectPort="8443" />
+     <!-- A "Connector" using the shared thread pool-->
+@@ -90,7 +90,7 @@
+     -->
+ 
+     <!-- Define an AJP 1.3 Connector on port 8009 -->
+-    <Connector port="5220" protocol="AJP/1.3" redirectPort="8443" />
++    <Connector port="5221" protocol="AJP/1.3" redirectPort="8443" />
+ 
+ 
+     <!-- An Engine represents the entry point (within Catalina) that processes
+
+changed: [172.20.3.58]
+
+TASK [templates/tomcat-devicebus-gw-5200 : Copy the App Configuration Files] ***
+ok: [172.20.3.58]
+
+TASK [templates/tomcat-devicebus-gw-5200 : Change ownership of Tomcat installation] ***
+ok: [172.20.3.58]
+
+TASK [templates/tomcat-devicebus-gw-5200 : Change user] ************************
+skipping: [172.20.3.58]
+
+TASK [templates/tomcat-devicebus-gw-5200 : wait for tomcat to start] ***********
+skipping: [172.20.3.58]
+
+RUNNING HANDLER [templates/tomcat-devicebus-gw-5200 : restart app] *************
+skipping: [172.20.3.58]
+
+PLAY RECAP *********************************************************************
+172.20.3.58                : ok=4    changed=1    unreachable=0    failed=0   

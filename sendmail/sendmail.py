@@ -18,10 +18,13 @@ import commands
 import datetime
 from myLog import MyLog
 import commands
+from pyh import *
 
-aList=["", "", "", "", ["", ""]]
-aList[0]="Hello"
-d2List = [];
+# aList=["1", "2", "2", "3", ["ew", "ep"]]
+aList=["", "", "", ["", ""]]
+# aList=["", "", "", "", ["", ""]]
+# aList=["", "", "", "", ["", ""]]
+d2List = []
 
 # 日志的配置
 ml = MyLog()
@@ -73,8 +76,6 @@ def send_mail(sender, recevier, subject, html_content):
     p.communicate(msg.as_string())
 
 
-output = commands.getstatusoutput('ls')  
-print  output 
 def parseTxt():
     txt = readTxt()
     # print txt
@@ -82,12 +83,73 @@ def parseTxt():
     print host
     print "服务器的ip为: " + host[0]
     aList[0]=host[0]
-    aList[1]=
+    Path="/Users/miraclewong/github/PythonBasic/sendmail"
+    os.chdir(Path)
+    comm1 = "cat result.txt | grep \"^--- before:\" | awk -F ': ' '{print $2}'"
+    comm2 = "cat result.txt | grep \"^--- before:\" | awk -F ': ' '{print $2}' | cut -d '/' -f 3 "
+    file = commands.getoutput(comm1)  
+    service = commands.getoutput(comm2)  
+    # print  output
+    aList[1]=service
+    aList[2]=file
+    # print aList[1]
+    # print aList[2]
+    comm3 = "cat result.txt | grep \"^-\" |grep -v \"^--- before\" "
+    comm4 = "cat result.txt | grep \"^+\" |grep -v \"^+++ after\" "
+    code_before = commands.getoutput(comm3)
+    code_after = commands.getoutput(comm4)
+    # print code_before
+    # print code_after
+
+    code_before_array = code_before.split("\n")
+    print len(code_before_array)
+
+    code_after_array = code_after.split("\n")
+    print len(code_after_array)
+    # if len(code_before_array) > len(code_before_array)
+    aList[3][0] = code_before_array[0]
+    aList[3][1] = code_after_array[0]
+    d2List.append(aList)
+    for i in range(len(code_before_array)-1):
+        bList=["", "", "", ["", ""]]
+        bList[3][0]=code_before_array[i+1]
+        bList[3][1]=code_after_array[i+1]
+        d2List.append(bList)
+
+    # for modify_code_after in code_after_array:
+    #     ml.debug("修改后的代码为:"+ modify_code_after.strip())
+    #     aList[3][1] = modify_code_after.strip()
+
+    # print aList
+    print d2List
 
 def shellexec():
     # p = Popen(["touch HelloWorld.txt"], stdin=PIPE)
     p = subprocess.Popen('touch HelloWorld.txt', shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     # p = subprocess.Popen('ansible-playbook copy-templates-to-app.yml --extra-vars "hosts=172.20.3.53 app_name=devicebus-gw-5200" --check --diff > /home/wangr/python/PythonFiles/resultH.txt', shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+
+
+def generateHtml():
+    page = PyH('My Page')
+    page<<div(style="text-align:center")<<h4('各个服务配置文件的检测')
+    mytab = page << table(border="1",cellpadding="3",cellspacing="0",style="margin:auto")
+    tr1 = mytab << tr(bgcolor="lightgrey")
+    tr1 << th('主机ip') + th('服务')+th('被修改文件')+th('配置项的修改前后对比')
+    # print len(d2List[0][3])
+    for i in range(len(d2List)):
+        tr2 = mytab << tr()
+        for j in range(4):
+            if len(d2List[i][j])==2:
+                tr2 << td('<div style="color:red">'+d2List[i][j][0]+'</div>'+'<div style="color:green">'+d2List[i][j][1]+'</div>')
+            else:
+                tr2 << td(d2List[i][j])
+            print d2List[i][j]
+            # if list[i][j]=='192.20.3.62':
+            #     tr2.attributes['bgcolor']='yellow'
+            # if list[i][j]=='program1.xml':
+            #     tr2[1].attributes['style']='color:red'
+    page.printOut('/Users/miraclewong/github/PythonBasic/PyH/hello.html')
+
 
 # 主程序入口
 def main():
@@ -110,6 +172,7 @@ def main():
     # print txt
     # print aList[0]
     parseTxt()
+    generateHtml()
 
 if __name__ == '__main__':
     main()

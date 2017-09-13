@@ -77,15 +77,15 @@ def readTxT():
     # else:
     #     pass
 
-    # code_before_array = content_before.split("+")
-    # for modify_code_before in code_before_array:
-    #     ml.debug("修改前的代码为:" + modify_code_before.strip())
-    # code_after_array = content_after.split("-")
-    # for modify_code_after in code_after_array:
-    #     ml.debug("修改后的代码为:"+ modify_code_after.strip())
+    code_before_array = content_before.split("+")
+    for modify_code_before in code_before_array:
+        ml.debug("修改前的代码为:" + modify_code_before.strip())
+    code_after_array = content_after.split("-")
+    for modify_code_after in code_after_array:
+        ml.debug("修改后的代码为:"+ modify_code_after.strip())
 
 
-    aList = ['', '', '', '', '', ['', '']]
+    # aList = ['', '', '', '', '', ['', '']]
     # ml.debug("lll:" + aList)
 
 def writeContent():
