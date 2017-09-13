@@ -30,8 +30,8 @@ d2List = []
 ml = MyLog()
 ## 切换目录
 def chdir():
-    path = "/Users/miraclewong/github/PythonBasic/Ansible"
-    # path = "/etc/ansible"
+    # path = "/Users/miraclewong/github/PythonBasic/Ansible"
+    path = "/etc/ansible"
 
     # 查看当前工作目录
     retval = os.getcwd()
@@ -48,8 +48,8 @@ def chdir():
 
 # 读取txt文本数据
 def readTxt():
-    file_object = open('/Users/miraclewong/github/PythonBasic/PyH/result.txt')
-    # file_object = open('/home/wangr/python/PythonFiles/resultH.txt')
+    # file_object = open('/Users/miraclewong/github/PythonBasic/PyH/result.txt')
+    file_object = open('/home/wangr/python/PythonFiles/resultH.txt')
     try:
         txt = file_object.read()
         return txt
@@ -58,8 +58,8 @@ def readTxt():
 
 ## 读取html的数据
 def readHtml():
-    # file_object = open('/home/wangr/python/PythonFiles/demo1.html')
-    html_object = open('/Users/miraclewong/github/PythonBasic/sendmail/demo1.html')
+    html_object = open('/home/wangr/python/PythonFiles/demo1.html')
+    # html_object = open('/Users/miraclewong/github/PythonBasic/sendmail/demo1.html')
     try:
         html = html_object.read()
         return html
@@ -78,12 +78,12 @@ def send_mail(sender, recevier, subject, html_content):
 
 def parseTxt():
     txt = readTxt()
-    # print txt
     host = re.findall(r'(?<![\.\d])(?:\d{1,3}\.){3}\d{1,3}(?![\.\d])', txt)
     print host
     print "服务器的ip为: " + host[0]
     aList[0]=host[0]
-    Path="/Users/miraclewong/github/PythonBasic/sendmail"
+    Path="/home/wangr/python/PythonFiles"
+    # Path="/Users/miraclewong/github/PythonBasic/sendmail"
     os.chdir(Path)
     comm1 = "cat result.txt | grep \"^--- before:\" | awk -F ': ' '{print $2}'"
     comm2 = "cat result.txt | grep \"^--- before:\" | awk -F ': ' '{print $2}' | cut -d '/' -f 3 "
@@ -116,17 +116,12 @@ def parseTxt():
         bList[3][1]=code_after_array[i+1]
         d2List.append(bList)
 
-    # for modify_code_after in code_after_array:
-    #     ml.debug("修改后的代码为:"+ modify_code_after.strip())
-    #     aList[3][1] = modify_code_after.strip()
-
-    # print aList
-    print d2List
+    # print d2List
 
 def shellexec():
     # p = Popen(["touch HelloWorld.txt"], stdin=PIPE)
-    p = subprocess.Popen('touch HelloWorld.txt', shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-    # p = subprocess.Popen('ansible-playbook copy-templates-to-app.yml --extra-vars "hosts=172.20.3.53 app_name=devicebus-gw-5200" --check --diff > /home/wangr/python/PythonFiles/resultH.txt', shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    # p = subprocess.Popen('touch HelloWorld.txt', shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    p = subprocess.Popen('ansible-playbook copy-templates-to-app.yml --extra-vars "hosts=172.20.3.53 app_name=devicebus-gw-5200" --check --diff > /home/wangr/python/PythonFiles/resultH.txt', shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 
 
 def generateHtml():
@@ -148,12 +143,12 @@ def generateHtml():
             #     tr2.attributes['bgcolor']='yellow'
             # if list[i][j]=='program1.xml':
             #     tr2[1].attributes['style']='color:red'
-    page.printOut('/Users/miraclewong/github/PythonBasic/PyH/hello.html')
+    # page.printOut('/Users/miraclewong/github/PythonBasic/PyH/hello.html')
+    page.printOut('/home/wangr/python/PythonFiles/hello.html')
 
 
 # 主程序入口
 def main():
-    # 日志的配置
 
     # 发件人
     sender="report@51iwifi.com"
@@ -165,14 +160,12 @@ def main():
     # html = readHtml()
     # send_mail(sender, recevier, subject, html)
     # txt = readTxt()
-    # print txt
-    # chdir()
-    # shellexec()
-    # txt = readTxt()
-    # print txt
-    # print aList[0]
+    chdir()
+    shellexec()
     parseTxt()
     generateHtml()
+    html = readHtml()
+    send_mail(sender, recevier, subject, html)
 
 if __name__ == '__main__':
     main()
