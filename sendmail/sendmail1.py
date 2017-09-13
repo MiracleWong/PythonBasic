@@ -48,17 +48,19 @@ def chdir():
 
 # 读取txt文本数据
 def readTxt():
-    #file_object = open('/Users/miraclewong/github/PythonBasic/PyH/result.txt')
-    file_object = open('/home/wangr/python/PythonFiles/resultH.txt')
+    file_object = open('/Users/miraclewong/github/PythonBasic/PyH/resultH.txt')
+    # file_object = open('/home/wangr/python/PythonFiles/resultH.txt')
     try:
         txt = file_object.read()
+        # print txt
         return txt
     finally:
         file_object.close()
 
 ## 读取html的数据
 def readHtml():
-    html_object = open('/home/wangr/python/PythonFiles/demo1.html')
+    # html_object = open('/home/wangr/python/PythonFiles/hello.html')
+    html_object = open('/Users/miraclewong/github/PythonBasic/PyH/hello.html')
     #html_object = open('/Users/miraclewong/github/PythonBasic/sendmail/demo1.html')
     try:
         html = html_object.read()
@@ -79,14 +81,14 @@ def send_mail(sender, recevier, subject, html_content):
 def parseTxt():
     txt = readTxt()
     host = re.findall(r'(?<![\.\d])(?:\d{1,3}\.){3}\d{1,3}(?![\.\d])', txt)
-    # print host
-    # print "服务器的ip为: " + host[0]
+    print host
+    print "服务器的ip为: " + host[0]
     aList[0]=host[0]
-    Path="/home/wangr/python/PythonFiles"
-    #Path="/Users/miraclewong/github/PythonBasic/sendmail"
+    # Path="/home/wangr/python/PythonFiles"
+    Path="/Users/miraclewong/github/PythonBasic/sendmail"
     os.chdir(Path)
-    comm1 = "cat result.txt | grep \"^--- before:\" | awk -F ': ' '{print $2}'"
-    comm2 = "cat result.txt | grep \"^--- before:\" | awk -F ': ' '{print $2}' | cut -d '/' -f 3 "
+    comm1 = "cat resultH.txt | grep \"^--- before:\" | awk -F ': ' '{print $2}'"
+    comm2 = "cat resultH.txt | grep \"^--- before:\" | awk -F ': ' '{print $2}' | cut -d '/' -f 3 "
     file = commands.getoutput(comm1)  
     service = commands.getoutput(comm2)  
     # print  output
@@ -94,12 +96,12 @@ def parseTxt():
     aList[2]=file
     # print aList[1]
     # print aList[2]
-    comm3 = "cat result.txt | grep \"^-\" |grep -v \"^--- before\" "
-    comm4 = "cat result.txt | grep \"^+\" |grep -v \"^+++ after\" "
+    comm3 = "cat resultH.txt | grep \"^-\" |grep -v \"^--- before\" "
+    comm4 = "cat resultH.txt | grep \"^+\" |grep -v \"^+++ after\" "
     code_before = commands.getoutput(comm3)
     code_after = commands.getoutput(comm4)
-    # print code_before
-    # print code_after
+    print code_before
+    print code_after
 
     code_before_array = code_before.split("\n")
     # print len(code_before_array)
@@ -110,13 +112,13 @@ def parseTxt():
     aList[3][0] = code_before_array[0]
     aList[3][1] = code_after_array[0]
     d2List.append(aList)
-    for i in range(len(code_before_array)-1):
-        bList=["", "", "", ["", ""]]
-        bList[3][0]=code_before_array[i+1]
-        bList[3][1]=code_after_array[i+1]
-        d2List.append(bList)
+    # for i in range(len(code_before_array)-1):
+    #     bList=["", "", "", ["", ""]]
+    #     bList[3][0]=code_before_array[i+1]
+    #     bList[3][1]=code_after_array[i+1]
+    #     d2List.append(bList)
 
-    # print d2List
+    print d2List
 
 def shellexec():
     # p = Popen(["touch HelloWorld.txt"], stdin=PIPE)
@@ -143,8 +145,8 @@ def generateHtml():
             #     tr2.attributes['bgcolor']='yellow'
             # if list[i][j]=='program1.xml':
             #     tr2[1].attributes['style']='color:red'
-    #page.printOut('/Users/miraclewong/github/PythonBasic/PyH/hello.html')
-    page.printOut('/home/wangr/python/PythonFiles/hello.html')
+    page.printOut('/Users/miraclewong/github/PythonBasic/PyH/hello.html')
+    # page.printOut('/home/wangr/python/PythonFiles/hello.html')
 
 
 # 主程序入口
@@ -160,17 +162,18 @@ def main():
     # html = readHtml()
     # send_mail(sender, recevier, subject, html)
     # txt = readTxt()
-    chdir()
-    shellexec()
-    print "shellexec"
+    # chdir()
+    # shellexec()
+    # print "shellexec"
+    readTxt()
     parseTxt()
-    print "parseTxt"
+    # print "parseTxt"
     generateHtml()
-    print "generateHtml"
+    # print "generateHtml"
     html = readHtml()
-    print "readHtml"
-    send_mail(sender, recevier, subject, html)
-    print "sendmail"
+    print html
+    # send_mail(sender, recevier, subject, html)
+    # print "sendmail"
 
 if __name__ == '__main__':
     main()
