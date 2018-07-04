@@ -7,4 +7,4 @@ redis_sub = obj.subscribe()#调用订阅方法
 
 while True:
     msg = redis_sub.parse_response()
-    print msg
+    print(msg)

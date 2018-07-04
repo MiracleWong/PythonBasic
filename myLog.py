@@ -5,7 +5,6 @@ import logging
 import getpass
 import sys
 
-
 class MyLog(object):
 
     """这个类用于创建一个自定义的log"""
@@ -14,7 +13,7 @@ class MyLog(object):
         self.logger = logging.getLogger(user)
         self.logger.setLevel(logging.DEBUG)
         logFile = sys.argv[0][0:-3] + '.log' #日志文件名
-        print logFile
+        print(logFile)
         formatter = logging.Formatter('%(asctime)-12s %(levelname)-8s %(name)-10s %(message)-12s')
 
         '''日志显示到屏幕上并输出到日志文件内'''

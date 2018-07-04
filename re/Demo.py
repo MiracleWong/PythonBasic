@@ -11,10 +11,10 @@ match = pattern.match('hello world!')
 
 if match:
     # 使用Match获得分组信息
-    print match.group()
+    print(match.group())
 
 ### 输出 ###
 # hello
 
 a=re.search(r'(tina)(fei)haha\2','tinafeihahafei tinafeihahatina').group()
-print "a: " + a
+print("a: " + a)

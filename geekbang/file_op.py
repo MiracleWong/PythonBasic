@@ -1,4 +1,5 @@
-# -*- coding:utf-8 -*-
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 # file1 = open('name.txt', 'w')
 # file1.write('Miracle')

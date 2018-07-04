@@ -1,5 +1,5 @@
-#!/usr/local/bin/python
-#-*- coding: utf-8 -*-
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 __author__ = "Miracle Wong"
 import urllib2
