@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 #-*- coding: utf-8 -*-
 
 import matplotlib.pyplot as plt
@@ -12,7 +12,7 @@ temp=[]
 wb = open_workbook('my_data.xlsx')
 
 for s in wb.sheets():
-    print 'Sheet:',s.name
+    print('Sheet:',s.name)
     for row in range(s.nrows):
         # print 'the row is:',row
         values = []
@@ -30,4 +30,4 @@ plt.ylabel(u"output-V")
 
 
 plt.show()
-print 'over!'
+print('over!')

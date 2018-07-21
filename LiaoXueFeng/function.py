@@ -16,25 +16,25 @@ def fact_iter(num, product):
         return product
     return fact_iter(num - 1, num * product)
 
-print fact(10)
+print(fact(10))
 
 L = []
 n = 1
 while n <= 99:
     L.append(n)
     n = n + 2
-print L
+print(L)
 
 ## 切片
 
 L = ['Michael', 'Sarah', 'Tracy', 'Bob', 'Jack']
-print [L[0], L[1], L[2]]
-print L[0:3]
-print L[:3]
-print L[1:3]
-print L[-2:-1]
-print L[-2:]
-print L[:-1]
+print(L[0], L[1], L[2])
+print(L[0:3])
+print(L[:3])
+print(L[1:3])
+print(L[-2:-1])
+print(L[-2:])
+print(L[:-1])
 
 L1 = range(100)
 print L1[:10]
@@ -60,7 +60,7 @@ print [x * x for x in range(1, 11) if x % 2 == 0]
 print [m + n for m in 'ABC' for n in 'XYZ']
 
 import os
-print [d for d in os.listdir('.')] # os.listdir可以列出文件和目录
+print([d for d in os.listdir('.')])
 d = {'x': 'A', 'y': 'B', 'z': 'C' }
 for k, v in d.iteritems():
     print k, '=', v

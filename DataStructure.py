@@ -1,4 +1,4 @@
-#!/usr/local/bin/python
+#!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
 # List
@@ -30,20 +30,20 @@ NASDAQ_CODE = {
 
 print(NASDAQ_CODE)
 a = {'key' : 123, 'key' : 123}
-print a
+print(a)
 
 NASDAQ_CODE.update({'FB': 'FaceBook', 'TSLA': 'Tesla'})
-print NASDAQ_CODE
+print(NASDAQ_CODE)
 
 del NASDAQ_CODE['FB']
-print NASDAQ_CODE
+print(NASDAQ_CODE)
 
 ## 元组
 letters = ('a', 'b', 'c', 'd', 'e', 'f', 'g')
-print letters[0]
+print(letters[0])
 
 # 集合
 a_set = {1,2,3,4}
 a_set.add(5)
 a_set.discard(5)
-print a_set
+print(a_set)
