@@ -20,4 +20,6 @@ print(np.ones((4, 6)))
 print(np.empty((2,3,2)))
 
 arr4 = np.arange(10)
-print(arr4[5])
+arr4[5:8] = 10
+print(arr4)
+
