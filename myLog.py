@@ -5,6 +5,7 @@ import logging
 import getpass
 import sys
 
+
 class MyLog(object):
 
     """这个类用于创建一个自定义的log"""
@@ -12,19 +13,19 @@ class MyLog(object):
         user = getpass.getuser()
         self.logger = logging.getLogger(user)
         self.logger.setLevel(logging.DEBUG)
-        logFile = sys.argv[0][0:-3] + '.log' #日志文件名
-        print(logFile)
+        logfile = sys.argv[0][0:-3] + '.log' #日志文件名
+        print(logfile)
         formatter = logging.Formatter('%(asctime)-12s %(levelname)-8s %(name)-10s %(message)-12s')
 
         '''日志显示到屏幕上并输出到日志文件内'''
-        logHand = logging.FileHandler(logFile)
-        logHand.setFormatter(formatter)
-        logHand.setLevel(logging.ERROR)  # 只有错误才会被记录到日志中
-        logHandSt = logging.StreamHandler()
-        logHandSt.setFormatter(formatter)
+        loghand = logging.FileHandler(logfile)
+        loghand.setFormatter(formatter)
+        loghand.setLevel(logging.ERROR)  # 只有错误才会被记录到日志中
+        loghandst = logging.StreamHandler()
+        loghandst.setFormatter(formatter)
 
-        self.logger.addHandler(logHand)
-        self.logger.addHandler(logHandSt)
+        self.logger.addHandler(loghand)
+        self.logger.addHandler(loghandst)
     
     '''日志的5个级别，对应以下的5个函数'''
     def debug(self, msg):
@@ -41,6 +42,7 @@ class MyLog(object):
 
     def critical(self, msg):
         self.logger.critical(msg)
+
 
 if __name__ == '__main__':
     mylog = MyLog()
