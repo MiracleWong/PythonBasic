@@ -1,7 +1,7 @@
 #!/usr/local/bin/python
 # -*- coding: utf-8 -*-
 
-__author__ = "Miracle Wong"
+__author__ = "MiracleWong"
 
 
 class PrintTable(object):
