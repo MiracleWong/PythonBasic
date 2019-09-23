@@ -17,7 +17,6 @@ print('中文'.encode('utf-8'))
 print(b'ABC'.decode('ascii'))
 print(b'\xe4\xb8\xad\xe6\x96\x87'.decode('utf-8'))
 
-
 # list 和 tuple
 classmates = ['Michael', 'Bob', 'Tracy']
 print(classmates)
@@ -28,7 +27,7 @@ classmates.append('Adam')  # 追加
 print(classmates)
 classmates.insert(1, 'Jack')  # 插入到指定位置
 print(classmates)
-classmates.pop(1)   # 移除指定位置
+classmates.pop(1)  # 移除指定位置
 print(classmates)
 classmates[1] = 'Sarah'
 print('classmates =', classmates)
@@ -38,11 +37,10 @@ L = ['Apple', 123, True]
 s = ['python', 'java', ['asp', 'php'], 'scheme']
 L1 = []
 
-
 # 元组tuple
 t = (1, 2)
 print(t)
-t1 = (1,)  # 只有1个元素的tuple定义时必须加一个逗号,，来消除歧义
+t1 = (1, )  # 只有1个元素的tuple定义时必须加一个逗号,，来消除歧义
 print(t1)
 
 # 可变tuple
@@ -51,7 +49,6 @@ t2 = ('a', 'b', ['A', 'B'])
 t2[2][0] = 'X'
 t2[2][1] = 'Y'
 print(t2)
-
 
 # 条件判断
 
@@ -70,7 +67,6 @@ else:
 # else:
 #     print('00后')
 
-
 # 循环
 
 # for
@@ -82,7 +78,6 @@ sum = 0
 for x in range(0, 101):
     sum = sum + x
     print(sum)
-
 
 # while
 sum = 0
@@ -101,7 +96,6 @@ while n <= 100:
     n = n + 1
 print('END')
 
-
 # continue
 n = 0
 while n < 10:
@@ -109,7 +103,6 @@ while n < 10:
     if n % 2 == 0:  # 如果n是偶数，执行continue语句
         continue  # continue语句会直接继续下一轮循环，后续的print()语句不会执行
     print(n)
-
 
 # dict
 # set
@@ -125,11 +118,8 @@ print(s1 | s2)
 
 # 练习Practice
 
-L = [
-    ['Apple', 'Google', 'Microsoft'],
-    ['Java', 'Python', 'Ruby', 'PHP'],
-    ['Adam', 'Bart', 'Lisa']
-]
+L = [['Apple', 'Google', 'Microsoft'], ['Java', 'Python', 'Ruby', 'PHP'],
+     ['Adam', 'Bart', 'Lisa']]
 
 print(L[0][0])
 print(L[1][1])
