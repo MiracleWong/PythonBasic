@@ -17,3 +17,6 @@ h = Hello()
 print(h.hello())
 print(type(Hello))
 print(type(h))
+
+// TODO
+# metaclass ORM
