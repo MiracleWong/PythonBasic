@@ -26,8 +26,8 @@ def binary_search(list, item):
     return -1
 
 
-# my_list = [1, 2, 2, 4, 5, 5] ##测试数据
-# my_list = [3, 4, 5, 8, 8, 8, 8, 10, 13, 14] ##测试数据
-my_list = [1, 2, 3, 3, 4, 5, 10]  # 测试数据
+my_list = [1, 2, 2, 4, 5, 5]  ##测试数据
+# my_list = [3, 4, 5, 8, 8, 8, 8, 10, 13, 14]  ##测试数据
+# my_list = [1, 2, 3, 3, 4, 5, 10]  # 测试数据
 
 print(binary_search(my_list, 3))
